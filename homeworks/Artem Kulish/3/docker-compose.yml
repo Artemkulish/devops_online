@@ -1,0 +1,25 @@
+version: "3.3"
+
+services: 
+    nodejs:
+        image: artemkulish/zone3000:nodejs
+	container_name: nodejs-app
+        ports: 
+            - 80:80
+            - 443:443
+        networks:
+            - net-nodejs
+
+    golang:
+        image: artemkulish/zone3000:golang
+        container_name: go-app
+        ports:
+           - 9000:9000
+        networks: 
+            - net-golang
+
+networks:
+    net-nodejs:
+        driver: bridge
+    net-golang:
+        driver: bridge
