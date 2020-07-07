@@ -4,7 +4,7 @@ resource "aws_key_pair" "ssh_key" {
 }
 
 resource "aws_instance" "public" {
- ami = "ami-0d359437d1756caa8"
+ ami = var.aws_instance_ami
  instance_type = "t2.micro"
  subnet_id = var.public_subnet_id
  vpc_security_group_ids = [var.security_group_name.id]
@@ -23,7 +23,7 @@ resource "aws_instance" "public" {
 }
 
 resource "aws_instance" "private" {
- ami = "ami-0d359437d1756caa8"
+ ami = var.aws_instance_ami
  instance_type = "t2.micro"
  subnet_id = var.private_subnet_id
  vpc_security_group_ids = [var.security_group_name.id]
